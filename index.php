@@ -61,6 +61,15 @@
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
+                                        <p><center><h2>
+                                            <?php 
+                                                if(isset($_GET['msg'])){
+                                                    echo $_GET['msg'];
+                                                }
+                                            ?>
+                                            </h2>
+                                            </center>
+                                        </p>
                                        
                                 </div>
                             </div>

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    include_once('functions/functions.php');
+
+    // if(!isset($_SESSION['uid'])){
+    //     header("location: index.php?msg=กรุณาลงชื่อเข้าใช้");
+    //     exit(0);
+    // }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,10 +42,10 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon">
+                    <img src="XII.png" height="50px" width="auto">
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">X<sup>2</sup>-SIM</div>
             </a>
 
             <!-- Divider -->
@@ -161,18 +171,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+           
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -324,7 +323,13 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <?php 
+                                        if(isset($_SESSION['userid'])){
+                                    echo $_SESSION['userid']; 
+                                        }
+                                    ?>
+                                </span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -358,10 +363,16 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+<!---------------------------Query Page Content--------------------->
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+<?php
+                    $con = new DB_CON();
 
+                    $page = $con->sql("SELECT * FROM `page`");
+                    $num = mysqli_fetch_array($page);
+?>                 
+                    <h1 class="h3 mb-4 text-gray-800"><?PHP if($num>0){ echo $num['Title']; } else{echo $num;} ?></h1>
+<!---------------------------END Query Page Content--------------------->
                 </div>
                 <!-- /.container-fluid -->
 
@@ -372,7 +383,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; X<sup>2</sup>-SIM 2022</span>
                     </div>
                 </div>
             </footer>
