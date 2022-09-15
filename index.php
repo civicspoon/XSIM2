@@ -43,13 +43,13 @@
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <input type="text" name="uid" class="form-control form-control-user"
+                                                id="uid" aria-describedby="emailHelp"
+                                                placeholder="รหัสพนักงาน">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password" class="form-control form-control-user"
+                                                id="exampleInputPassword" placeholder="รหัสผ่าน">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
